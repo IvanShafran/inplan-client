@@ -18,7 +18,7 @@ public class Student extends User {
 	private String sex;
 	@SerializedName("plan")
 	@Expose
-	private Integer plan;
+	private Long plan;
 
 	/**
 	* 
@@ -97,7 +97,7 @@ public class Student extends User {
 	* @return
 	* The plan
 	*/
-	public Integer getPlan() {
+	public Long getPlan() {
 	return plan;
 	}
 
@@ -106,7 +106,7 @@ public class Student extends User {
 	* @param plan
 	* The plan
 	*/
-	public void setPlan(Integer plan) {
+	public void setPlan(Long plan) {
 	this.plan = plan;
 	}
 

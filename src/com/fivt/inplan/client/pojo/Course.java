@@ -12,16 +12,16 @@ public class Course extends BaseItem {
 	private String label;
 	@SerializedName("creditsPrice")
 	@Expose
-	private Integer creditsPrice;
+	private Long creditsPrice;
 	@SerializedName("studyArea")
 	@Expose
 	private String studyArea;
 	@SerializedName("requiredCompletedCourses")
 	@Expose
-	private List<Object> requiredCompletedCourses = new ArrayList<Object>();
+	private List<Long> requiredCompletedCourses = new ArrayList<Long>();
 	@SerializedName("professors")
 	@Expose
-	private List<Integer> professors = new ArrayList<Integer>();
+	private List<Long> professors = new ArrayList<Long>();
 	
 	/**
 	* 
@@ -46,7 +46,7 @@ public class Course extends BaseItem {
 	* @return
 	* The creditsPrice
 	*/
-	public Integer getCreditsPrice() {
+	public Long getCreditsPrice() {
 	return creditsPrice;
 	}
 	
@@ -55,7 +55,7 @@ public class Course extends BaseItem {
 	* @param creditsPrice
 	* The creditsPrice
 	*/
-	public void setCreditsPrice(Integer creditsPrice) {
+	public void setCreditsPrice(Long creditsPrice) {
 	this.creditsPrice = creditsPrice;
 	}
 	
@@ -82,7 +82,7 @@ public class Course extends BaseItem {
 	* @return
 	* The requiredCompletedCourses
 	*/
-	public List<Object> getRequiredCompletedCourses() {
+	public List<Long> getRequiredCompletedCourses() {
 	return requiredCompletedCourses;
 	}
 	
@@ -91,7 +91,7 @@ public class Course extends BaseItem {
 	* @param requiredCompletedCourses
 	* The requiredCompletedCourses
 	*/
-	public void setRequiredCompletedCourses(List<Object> requiredCompletedCourses) {
+	public void setRequiredCompletedCourses(List<Long> requiredCompletedCourses) {
 	this.requiredCompletedCourses = requiredCompletedCourses;
 	}
 	
@@ -100,7 +100,7 @@ public class Course extends BaseItem {
 	* @return
 	* The professors
 	*/
-	public List<Integer> getProfessors() {
+	public List<Long> getProfessors() {
 	return professors;
 	}
 	
@@ -109,7 +109,7 @@ public class Course extends BaseItem {
 	* @param professors
 	* The professors
 	*/
-	public void setProfessors(List<Integer> professors) {
+	public void setProfessors(List<Long> professors) {
 	this.professors = professors;
 	}
 
