@@ -18,12 +18,16 @@ public class WindowPresenter {
 	protected Scene scene;
 	protected BorderPane rootLayout;
 	
+	public static WindowPresenter from(String viewPath) {
+		return from(viewPath, null);
+	}
+	
 	/**
 	 * Creates WindowPresenter with one stage and scene from viewPath.
 	 * @param viewPath -- relative to Client folder
 	 * @return null if viewPath is wrong
 	 */
-	public static WindowPresenter from(String viewPath) {
+	public static WindowPresenter from(String viewPath, Stage stage) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Client.class.getResource(ROOT_LAYOUT));
@@ -33,17 +37,22 @@ public class WindowPresenter {
 			AnchorPane pane = (AnchorPane) loader.load();
 			rootLayout.setCenter(pane);
 			
-			return new WindowPresenter(rootLayout);
+			return new WindowPresenter(rootLayout, stage);
 		} catch (IOException e) {
 			return null;
 		}
 	}
 	
-	private WindowPresenter(BorderPane rootLayout) {
+	private WindowPresenter(BorderPane rootLayout, Stage stage) {
 		this.rootLayout = rootLayout;
 		
 		scene = new Scene(rootLayout);
-		stage = new Stage();
+		
+		if (stage == null) {
+			stage = new Stage();
+		}
+		
+		this.stage = stage;
 		stage.setScene(scene);
 	}
 	
