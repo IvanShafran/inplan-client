@@ -2,15 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="245.0" prefWidth="232.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fivt.inplan.client.gui.view.AuthView">
    <children>
-      <Button fx:id="login_button" layoutX="25.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Login" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="125.0" />
+      <Button fx:id="loginButton" layoutX="25.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Login" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
       <Label layoutX="25.0" layoutY="25.0" text="Login" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="25.0" />
       <Label layoutX="25.0" layoutY="67.0" text="Password" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0" />
-      <TextField fx:id="login_textfield" layoutX="25.0" layoutY="42.0" prefHeight="25.0" prefWidth="190.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <TextField fx:id="password_textfield" layoutX="25.0" layoutY="84.0" prefHeight="25.0" prefWidth="190.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="85.0" />
+      <TextField fx:id="login" layoutX="25.0" layoutY="42.0" prefHeight="25.0" prefWidth="190.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <TextField fx:id="password" layoutX="25.0" layoutY="84.0" prefHeight="25.0" prefWidth="190.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="85.0" />
+      <RadioButton fx:id="studentRadio" layoutX="20.0" layoutY="122.0" mnemonicParsing="false" text="Student" />
+      <RadioButton fx:id="professorRadio" layoutX="20.0" layoutY="146.0" mnemonicParsing="false" text="Professor" />
+      <RadioButton fx:id="deaneryRadio" layoutX="20.0" layoutY="172.0" mnemonicParsing="false" text="Deanery" />
    </children>
 </AnchorPane>

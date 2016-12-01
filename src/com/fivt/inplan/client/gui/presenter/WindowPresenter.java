@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class WindowPresenter {
+public class WindowPresenter<View> {
 	
 	private static final String ROOT_LAYOUT = "RootLayout.fxml";
 	
@@ -18,41 +18,30 @@ public class WindowPresenter {
 	protected Scene scene;
 	protected BorderPane rootLayout;
 	
-	public static WindowPresenter from(String viewPath) {
-		return from(viewPath, null);
-	}
+	protected View view;
 	
-	/**
-	 * Creates WindowPresenter with one stage and scene from viewPath.
-	 * @param viewPath -- relative to Client folder
-	 * @return null if viewPath is wrong
-	 */
-	public static WindowPresenter from(String viewPath, Stage stage) {
+	protected WindowPresenter(Stage stagePrimary, String viewName) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Client.class.getResource(ROOT_LAYOUT));
-			BorderPane rootLayout = (BorderPane) loader.load();
+			loader.setLocation(Client.getViewResource(ROOT_LAYOUT));
+			rootLayout = (BorderPane) loader.load();
 			
-			loader.setLocation(Client.class.getResource(viewPath));
+			loader = new FXMLLoader();
+			loader.setLocation(Client.getViewResource(viewName));
 			AnchorPane pane = (AnchorPane) loader.load();
+			view = loader.getController();
 			rootLayout.setCenter(pane);
-			
-			return new WindowPresenter(rootLayout, stage);
 		} catch (IOException e) {
-			return null;
+			//do nothing
 		}
-	}
-	
-	private WindowPresenter(BorderPane rootLayout, Stage stage) {
-		this.rootLayout = rootLayout;
 		
 		scene = new Scene(rootLayout);
 		
-		if (stage == null) {
-			stage = new Stage();
+		if (stagePrimary == null) {
+			stagePrimary = new Stage();
 		}
 		
-		this.stage = stage;
+		stage = stagePrimary;
 		stage.setScene(scene);
 	}
 	
