@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.fivt.inplan.client.Client;
+import com.fivt.inplan.client.Logger;
 import com.fivt.inplan.client.pojo.Deanery;
 import com.fivt.inplan.client.pojo.Professor;
 import com.fivt.inplan.client.pojo.Student;
@@ -11,7 +12,10 @@ import com.fivt.inplan.client.pojo.User;
 
 public class ExistAuthPolicy implements IAuthPolicy {
 	
+	private static final String TAG = ExistAuthPolicy.class.getSimpleName();
+	
 	private <T extends User> T tryAuth(List<T> users, String login) {
+		Logger.d(TAG, "users size: " + (users == null ? "null" : users.size()));
 		for (T user : users) {
 			if (user.getLogin().equals(login)) {
 				return user;
