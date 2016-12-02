@@ -7,16 +7,14 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fivt.inplan.client.gui.view.StudentMainView">
    <children>
-      <ImageView fitHeight="800.0" fitWidth="600.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
+      <ImageView fx:id="mainView" fitHeight="800.0" fitWidth="600.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
          <image>
-            <Image url="com.fivt.inplan.client.gui.view.student_main.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="632.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="-0.1854248046875" AnchorPane.topAnchor="118.0">
+            <Image url="@student_main.png" />
+         </image></ImageView>
+      <ImageView fx:id="rightView" fitHeight="300.0" fitWidth="300.0" layoutX="632.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="-0.1854248046875" AnchorPane.topAnchor="118.0">
          <image>
-            <Image url="com.fivt.inplan.client.gui.view.student_right.png" />
-         </image>
-      </ImageView>
+            <Image url="@student_right.png" />
+         </image></ImageView>
       <Button fx:id="button" layoutX="632.0" layoutY="10.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="172.0" text="Посмотреть успеваемость" AnchorPane.leftAnchor="632.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>
