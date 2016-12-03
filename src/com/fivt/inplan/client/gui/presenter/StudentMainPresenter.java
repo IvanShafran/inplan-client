@@ -33,5 +33,6 @@ public class StudentMainPresenter extends WindowPresenter<StudentMainView> {
 	
 	public void onShowMarksClick() {
 		Logger.d(TAG, "onClick");
+		StudentRatingPresenter.start(student);
 	}
 }

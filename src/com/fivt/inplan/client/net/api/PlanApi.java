@@ -2,7 +2,6 @@ package com.fivt.inplan.client.net.api;
 
 import java.util.List;
 
-import com.fivt.inplan.client.pojo.Course;
 import com.fivt.inplan.client.pojo.Plan;
 
 import retrofit2.Call;
@@ -16,5 +15,8 @@ public interface PlanApi {
 	Call<List<Plan>> getPlan(@Path("id") Long studentId);
 	
 	@GET(BASE_PLAN + "/courses/id/{id}")
-	Call<List<Course>> getCourcesByPlanId(@Path("id") Long planId);
+	Call<List<Long>> getCoursesByPlanId(@Path("id") Long planId);
+		
+	@GET(BASE_PLAN + "/specialization/id/{specialization}")
+	Call<List<Long>> getPlanIdsBySpecialization(@Path("specialization") Long specializationId);
 }

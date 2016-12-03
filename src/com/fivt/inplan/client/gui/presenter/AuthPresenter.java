@@ -38,13 +38,13 @@ public class AuthPresenter extends WindowPresenter<AuthView> {
 		String password = view.getPassword();
 		
 		if (view.isStudent()) {
-			Student student = null;//authPolicy.tryAuthStudent(login, password);
-//			if (student != null) {
+			Student student = authPolicy.tryAuthStudent(login, password);
+			if (student != null) {
 				Logger.d(TAG, "auth: success");
 				StudentMainPresenter.start(student);
 				hide();
 				return; 
-//			}
+			}
 		} else if (view.isProfessor()) {
 			Professor professor = authPolicy.tryAuthProfessor(login, password);
 			if (professor != null) {
