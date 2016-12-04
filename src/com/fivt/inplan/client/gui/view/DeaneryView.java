@@ -39,8 +39,11 @@ public class DeaneryView {
 		
 		studentTable.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> {
-					if (presenter != null) 
-						presenter.onStudentClick(newValue.getId());
+					if (presenter != null) {
+						if (newValue != null) {
+							presenter.onStudentClick(newValue.getId());
+						}
+					}
 					});
 	}
 	

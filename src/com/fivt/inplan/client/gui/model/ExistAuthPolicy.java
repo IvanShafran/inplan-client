@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import com.fivt.inplan.client.Client;
-import com.fivt.inplan.client.Logger;
 import com.fivt.inplan.client.pojo.Deanery;
 import com.fivt.inplan.client.pojo.Professor;
 import com.fivt.inplan.client.pojo.Student;
 import com.fivt.inplan.client.pojo.User;
+import com.fivt.inplan.client.utils.Logger;
 
 public class ExistAuthPolicy implements IAuthPolicy {
 	

@@ -3,9 +3,9 @@ package com.fivt.inplan.client.gui.presenter;
 import java.io.File;
 import java.io.IOException;
 
-import com.fivt.inplan.client.Logger;
 import com.fivt.inplan.client.gui.view.StudentMainView;
 import com.fivt.inplan.client.pojo.Student;
+import com.fivt.inplan.client.utils.Logger;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

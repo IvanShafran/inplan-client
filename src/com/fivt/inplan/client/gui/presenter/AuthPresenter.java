@@ -2,13 +2,13 @@ package com.fivt.inplan.client.gui.presenter;
 
 import java.net.URL;
 
-import com.fivt.inplan.client.Logger;
 import com.fivt.inplan.client.gui.model.ExistAuthPolicy;
 import com.fivt.inplan.client.gui.view.AuthView;
 import com.fivt.inplan.client.gui.view.StudentMainView;
 import com.fivt.inplan.client.pojo.Deanery;
 import com.fivt.inplan.client.pojo.Professor;
 import com.fivt.inplan.client.pojo.Student;
+import com.fivt.inplan.client.utils.Logger;
 
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -56,7 +56,8 @@ public class AuthPresenter extends WindowPresenter<AuthView> {
 			Deanery deanery = authPolicy.tryAuthDeanery(login, password);
 			if (deanery != null) {
 				Logger.d(TAG, "auth: success");
-				//start
+				DeaneryPresenter.start();
+				hide();
 				return;
 			}
 		}

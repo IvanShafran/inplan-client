@@ -1,4 +1,4 @@
-package com.fivt.inplan.client;
+package com.fivt.inplan.client.utils;
 
 public class Logger {
 	

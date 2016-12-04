@@ -9,6 +9,8 @@ import com.fivt.inplan.client.gui.view.StudentRatingView;
 import com.fivt.inplan.client.pojo.Student;
 import com.fivt.inplan.client.utils.StringUtils;
 
+import static com.fivt.inplan.client.utils.ObservableUtils.getObservable;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -34,10 +36,7 @@ public class StudentRatingPresenter extends WindowPresenter<StudentRatingView> {
 		
 		setTitle(student);
 		
-		List<CourseItem> items = model.getCourseItems();
-		ObservableList<CourseItem> observables = FXCollections.observableArrayList();
-		observables.addAll(items);
-		view.setCourses(observables);
+		view.setCourses(getObservable(model.getCourseItems()));
 	}
 	
 	private void setTitle(Student student) {
@@ -49,9 +48,6 @@ public class StudentRatingPresenter extends WindowPresenter<StudentRatingView> {
 	}
 	
 	public void onCourseClick(Long courseId) {
-		List<MarkItem> items = model.getCourseMarks(courseId);
-		ObservableList<MarkItem> observables = FXCollections.observableArrayList();
-		observables.addAll(items);
-		view.setMarks(observables);
+		view.setMarks(getObservable(model.getCourseMarks(courseId)));
 	}
 }

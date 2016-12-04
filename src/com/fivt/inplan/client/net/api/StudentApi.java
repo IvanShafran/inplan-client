@@ -25,6 +25,6 @@ public interface StudentApi {
 	@GET(BASE_STUDENT + "/lastname/id/{lastname}")
 	Call<List<Long>> getStudentsIdsByLastname(@Path("lastname") String lastname);
 	
-	@GET(BASE_STUDENT + "id/{id}")
+	@GET(BASE_STUDENT + "/id/{id}")
 	Call<Student> getStudentById(@Path("id") long studentId);
 }

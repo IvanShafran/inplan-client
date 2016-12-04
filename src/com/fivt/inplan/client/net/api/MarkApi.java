@@ -33,7 +33,7 @@ public interface MarkApi {
 	Call<Void> updateMarkById(@Path("id") Long markId, @Body RequestBody markBody);
 	
 	@POST(BASE_MARK)
-	Call<Void> createMark(@Body RequestBody markBody);
+	Call<Void> createMark(@Body Mark mark);
 	
 	@DELETE(BASE_MARK + "/id/{id}")
 	Call<Void> deleteMarkById(@Path("id") Long markId);

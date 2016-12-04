@@ -3,18 +3,21 @@ package com.fivt.inplan.client.gui.model;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.fivt.inplan.client.Client;
-import com.fivt.inplan.client.Logger;
 import com.fivt.inplan.client.pojo.Specialization;
 import com.fivt.inplan.client.pojo.Student;
+import com.fivt.inplan.client.utils.Logger;
 import com.fivt.inplan.client.utils.StringUtils;
+import com.fivt.inplan.client.utils.StudentUtils;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import retrofit2.Call;
+import retrofit2.Response;
 
 public class DeaneryModel {
 	
@@ -28,6 +31,9 @@ public class DeaneryModel {
 	}
 	
 	private void loadSpecializations() {
+		specializationItems = new ArrayList<>();
+		specializationStudents = new HashMap<>();
+		
 		Call<List<Specialization>> call = Client.specializationApi.getAllSpecializations();
 		try {
 			specializations = call.execute().body();
@@ -43,12 +49,6 @@ public class DeaneryModel {
 		}
 	}
 	
-	private String getName(Student student) {
-		return StringUtils.getNotNullString(student.getFirstname())
-				+ " " 
-				+ StringUtils.getNotNullString(student.getLastname());
-	}
-	
 	private void loadStudents() {
 		for (Specialization specialization : specializations) {
 			Call<List<Long>> call = Client.planApi
@@ -58,10 +58,11 @@ public class DeaneryModel {
 				List<Long> studentIds = call.execute().body();
 				for (Long id : studentIds) {
 					Call<Student> studentCall = Client.studentApi.getStudentById(id);
-					Student student = studentCall.execute().body();
+					Response<Student> response = studentCall.execute();
+					Student student = response.body();
 					StudentItem item = new StudentItem();
 					item.setId(id);
-					item.setName(getName(student));
+					item.setName(StudentUtils.getName(student));
 					specializationStudents.get(specialization.getId()).add(item);
 				}
 			} catch (IOException e) {

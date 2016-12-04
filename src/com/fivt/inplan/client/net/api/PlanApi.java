@@ -19,4 +19,7 @@ public interface PlanApi {
 		
 	@GET(BASE_PLAN + "/specialization/id/{specialization}")
 	Call<List<Long>> getPlanIdsBySpecialization(@Path("specialization") Long specializationId);
+	
+	@GET(BASE_PLAN + "/all/bycourse/{course}")
+	Call<List<Long>> getPlanIdsByCourseId(@Path("course") Long courseId);
 }
