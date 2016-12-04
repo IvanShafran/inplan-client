@@ -44,6 +44,8 @@ public class PutMarkView {
 		markColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 		descriptionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 		
+		table.setEditable(true);
+		
 		button.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override

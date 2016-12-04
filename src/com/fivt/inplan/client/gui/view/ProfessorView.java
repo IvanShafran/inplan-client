@@ -39,14 +39,20 @@ public class ProfessorView {
 		
 		courseTable.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> {
-					if (presenter != null) 
-						presenter.onCourseClick(newValue.getId());
+					if (presenter != null) {
+						if (newValue != null) {
+							presenter.onCourseClick(newValue.getId());
+						}
+					}
 					});
 		
 		studentTable.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> {
-					if (presenter != null) 
-						presenter.onStudentClick(newValue.getId());
+					if (presenter != null) {
+						if (newValue != null) {
+							presenter.onStudentClick(newValue.getId());
+						}
+					}
 					});
 		
 		button.setOnAction(new EventHandler<ActionEvent>() {

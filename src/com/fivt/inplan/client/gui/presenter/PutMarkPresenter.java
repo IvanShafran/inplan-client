@@ -6,6 +6,7 @@ import com.fivt.inplan.client.gui.model.ProfessorModel.StudentItem;
 import com.fivt.inplan.client.gui.model.PutMarkModel;
 import com.fivt.inplan.client.gui.view.PutMarkView;
 import com.fivt.inplan.client.pojo.Professor;
+import com.fivt.inplan.client.utils.ObservableUtils;
 
 public class PutMarkPresenter extends WindowPresenter<PutMarkView> {
 	
@@ -30,6 +31,8 @@ public class PutMarkPresenter extends WindowPresenter<PutMarkView> {
 		this.courseId = courseId;
 		
 		model = new PutMarkModel(studentItems);
+		view.setItems(ObservableUtils.getObservable(model.getPutMarkItems()));
+		view.setPresenter(this);
 	}
 	
 	public void onPutMarksClick() {
@@ -37,5 +40,6 @@ public class PutMarkPresenter extends WindowPresenter<PutMarkView> {
 				professor.getId(), 
 				view.getCommonDescription(), 
 				view.getItems());
+		hide();
 	}
 }

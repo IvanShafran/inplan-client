@@ -3,6 +3,7 @@ package com.fivt.inplan.client.gui.model;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,9 @@ public class ProfessorModel {
 	}
 	
 	private void loadCourses() {
+		courses = new ArrayList<CourseItem>();
+		courseStudents = new HashMap<Long, List<StudentItem>>();
+		
 		Call<List<Course>> call = Client.courseApi
 				.getCourcesByProfessorId(professor.getId());
 		

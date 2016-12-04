@@ -15,6 +15,7 @@ public class ProfessorPresenter extends WindowPresenter<ProfessorView> {
 	
 	public static void start(Professor professor) {
 		WindowPresenter<ProfessorView> presenter = new ProfessorPresenter(professor);
+		presenter.show();
 	}
 	
 	private ProfessorPresenter(Professor professor) {

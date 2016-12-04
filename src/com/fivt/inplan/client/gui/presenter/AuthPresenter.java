@@ -49,7 +49,8 @@ public class AuthPresenter extends WindowPresenter<AuthView> {
 			Professor professor = authPolicy.tryAuthProfessor(login, password);
 			if (professor != null) {
 				Logger.d(TAG, "auth: success");
-				//start
+				ProfessorPresenter.start(professor);
+				hide();
 				return;
 			}
 		} else if (view.isDeanery()) {

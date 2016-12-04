@@ -1,5 +1,6 @@
 package com.fivt.inplan.client.gui.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class PutMarkModel {
 	
@@ -20,7 +23,7 @@ public class PutMarkModel {
 		putMarkItems = new ArrayList<PutMarkItem>();
 		for (StudentItem studentItem : studentItems) {
 			PutMarkItem putMarkItem = new PutMarkItem();
-			putMarkItem.setId(studentItem.getId());
+			putMarkItem.setStudentId(studentItem.getId());
 			putMarkItem.setName(studentItem.nameProperty());
 			
 			putMarkItems.add(putMarkItem);
@@ -42,14 +45,22 @@ public class PutMarkModel {
 				mark.setProfessor(professorId);
 				mark.setValue(item.mark.get());
 				mark.setDescription(commonDescription + " " + item.description.get());
-				Client.markApi.createMark(mark);
+				mark.setStudent(item.getStudentId());
+				
+				try {
+					Call<Void> call = Client.markApi.createMark(mark);
+					Response<Void> response = call.execute();
+					int t = 1;
+				} catch (IOException e) {
+					//do nothing
+				}
 			}
 		}
 	}
 	
 	public static class PutMarkItem {
 		private StringProperty name = new SimpleStringProperty();
-		private Long id;
+		private Long studentId;
 		private IntegerProperty mark = new SimpleIntegerProperty();
 		private StringProperty description = new SimpleStringProperty();
 		
@@ -61,12 +72,12 @@ public class PutMarkModel {
 			this.name = name;
 		}
 		
-		public Long getId() {
-			return id;
+		public Long getStudentId() {
+			return studentId;
 		}
 		
-		public void setId(Long id) {
-			this.id = id;
+		public void setStudentId(Long studentId) {
+			this.studentId = studentId;
 		}
 		
 		public IntegerProperty markProperty() {
